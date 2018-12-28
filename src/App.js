@@ -5,35 +5,33 @@ export default class CharacterCard extends Component {
 
     constructor(props){
         super(props);
-        this.state = {};
+        this.state = { appShow : true};
     }
     componentDidMount() {
-        console.log("did mount");
+        this.setState( { appShow : false});
 
+        console.log("did mount");
     }
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        console.log("should update ??");
+        return true;
+    }
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         console.log("did update");
 
     }
     componentWillUnmount() {
-        console.log("willMount");
-
+        console.log("willMount")
     }
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
-        console.log("shouldComponent Update ");
 
-    }
-     getSnapshotBeforeUpdate(prevProps, prevState) {
-        console.log("getSnapShot");
 
-    }
     render() {
         console.log("render");
         return (
-                <div className="card">ç
-        {/*unas veces se muestra y otras no*/}
+                <div className="card">
 
-                    {this.state.app ? <CharterTitle/> : <span></span> }
+                    {this.state.appShow ? <CharterTitle/> : <span></span> }
                     <p>Estado del personaje</p>
                     <p>Género</p>
                     <p>Capítulo</p>
@@ -43,6 +41,10 @@ export default class CharacterCard extends Component {
 }
 
 class CharterTitle extends Component {
+    componentDidMount() {
+        console.log("Tittle mounted");
+    }
+
     render() {
         return (
                 <h1>Character Name </h1>
