@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 
 export default class ComponentProps extends Component {
-//    las props de un componente son inmutables
+    // las props de un componente son inmutables
     // el estado es mutable desde el setState()
     // el estado se añade siempre al constructor
+    // las props son pasadas de padres a hijos
 
     constructor(props){
         super(props);
@@ -13,26 +14,41 @@ export default class ComponentProps extends Component {
            chapters : this.props.chapters,
            gender : this.props.gender,
            title : this.props.title,
+           characterTitle : "sadf"
         }
 
+        //pasamos el contexto this a la funcion
+        // this.kill =  this.kill.bind(this);
 
     }
+    //al utilizar arrow function no hace falta pasarle el contexto this
+    kill = (querty , e) =>  {
+        console.log(e.target.value);
+        //this.setState({state : "alive"});
+    };
 
-    componentDidMount() {
-        this.setState({
-            state: "alive"
-        });
+
+    setApp = (param) => {
+        console.log("sadfasdf");
+        this.setState({characterTitle : param })
     }
+
+
 
     render() {
         console.log("render");
         return (
                 <div className="card">
-                    <App title={this.props.title} />
+                    <App  setApp ={this.setApp} title={this.state.characterTitle} />
 
                     <p>Estado del personaje : {this.state.state}</p>
                     <p>Género {this.state.gender}</p>
                     <p>Capítulo {this.state.chapters}</p>
+
+                    {/*le pasamos el contexto propio del evento
+                        util para recorrer un for y pasar el contenido del <li>
+                        o algo así */}
+                    <input onChange={this.kill.bind(this , "querty")} />
                 </div>
         );
     }
@@ -42,6 +58,12 @@ export default class ComponentProps extends Component {
 
 
 export class App extends Component {
+
+    componentDidMount() {
+        console.log("App mounted")
+        console.log(this.props.title)
+        this.props.setApp("sdfasfd");
+    }
 
     render() {
       return (
