@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import * as CharactersComponent from './Characters'
+
+
 
 export default class ComponentProps extends Component {
     // las props de un componente son inmutables
@@ -11,7 +14,7 @@ export default class ComponentProps extends Component {
         super(props);
         this.state = {
            state : this.props.state,
-           chapters : this.props.chapters,
+          // chapters : Characters.results,
            gender : this.props.gender,
            title : this.props.title,
            characterTitle : "sadf"
@@ -31,19 +34,18 @@ export default class ComponentProps extends Component {
     setApp = (param) => {
         console.log("sadfasdf");
         this.setState({characterTitle : param })
-    }
-
-
+    };
 
     render() {
         console.log("render");
+        console.log(this.state.chapters);
+
         return (
                 <div className="card">
                     <App  setApp ={this.setApp} title={this.state.characterTitle} />
 
                     <p>Estado del personaje : {this.state.state}</p>
                     <p>Género {this.state.gender}</p>
-                    <p>Capítulo {this.state.chapters}</p>
 
                     {/*le pasamos el contexto propio del evento
                         util para recorrer un for y pasar el contenido del <li>
@@ -60,8 +62,8 @@ export default class ComponentProps extends Component {
 export class App extends Component {
 
     componentDidMount() {
-        console.log("App mounted")
-        console.log(this.props.title)
+        console.log("App mounted");
+        console.log(this.props.title);
         this.props.setApp("sdfasfd");
     }
 
