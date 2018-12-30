@@ -32,7 +32,7 @@ export default class Formulario extends Component {
         return (
             <form onSubmit={this.handleSubmit.bind(this)}>
                 {this.state.inputs.map((input,key) => {
-                 return   <Input type = {input.type} validation = {input.validation} id = {input.id} key={key} isValid = {this.handleValid} />
+                 return   <InputWithValidation type = {input.type} validation = {input.validation} id = {input.id} key={key} isValid = {this.handleValid} />
 
                 })}
                 <button type="submit">Submit</button>
@@ -41,7 +41,7 @@ export default class Formulario extends Component {
     }
 }
 
-export class Input extends Component{
+export class InputWithValidation extends Component{
     constructor(props){
         super(props);
         const {type , validation, id  , isValid } = this.props;
@@ -63,15 +63,10 @@ export class Input extends Component{
         }
         return this.props.isValid(false);
     };
-
-
     render() {
         return (
             <input id={this.state.id} type={this.state.type} onChange={this.validateInput.bind(this , this.state.validation)}>
-
             </input>
         );
     }
-
-
 }
