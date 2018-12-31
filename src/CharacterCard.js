@@ -7,11 +7,9 @@ import './App.css';
 library.add(faSkull, faHeart , faQuestion);
 
 export default class CharacterCard extends Component {
-
     constructor(props){
         super(props);
         const {title,gender,episode,status} = this.props;
-
         this.state = {
             title : title,
             gender : gender,
@@ -19,8 +17,6 @@ export default class CharacterCard extends Component {
             status : status,
         };
     }
-
-
 
     render() {
         return (

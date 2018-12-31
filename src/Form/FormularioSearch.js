@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 
-export default class Formulario extends Component {
+export  class FormularioSearch extends Component {
 
     constructor(props){
         super(props);

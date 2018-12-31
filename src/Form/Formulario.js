@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import '../App.css';
 
-export default class Formulario extends Component {
+export  class Formulario extends Component {
 
     constructor(props){
         super(props);
         const {inputs} =  this.props;
-        console.log(this.props);
         this.state  = {
             inputs :  inputs ,
             isValid : false
         };
-
     }
-
      handleValid = param => {
         this.setState({isValid : param});
     };
